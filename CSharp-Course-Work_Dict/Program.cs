@@ -6,6 +6,7 @@
         {
             Console.WriteLine("Hello, World!");
             Console.WriteLine("CSharp");
+            Console.WriteLine("CSharp");
         }
     }
 }
