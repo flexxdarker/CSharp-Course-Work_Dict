@@ -33,6 +33,7 @@
 2.print
 3.search
 4.change
+5.delete word
 0.exit");
                 a = Convert.ToInt32(Console.ReadLine());
                 switch (a)
@@ -48,6 +49,8 @@
                         break;
                     case 4:
                         dictionary.changeWord();
+                        break;
+                    case 5:dictionary.DeleteWord();
                         break;
                     case 0:
                         a = -1;

@@ -31,15 +31,16 @@ namespace CSharp_Course_Work_Dict
             foreach (KeyValuePair<string, List<string>> tmp in dictionaries)
             {
                 Console.WriteLine();
-                Console.WriteLine($@"Word {tmp.Key}      
-   ||
-   \/");
+                Console.WriteLine($@"\tWord {tmp.Key}      
+   \t||
+   \t\/");
                 foreach (var translate in tmp.Value)
                 {
-                Console.WriteLine($"Translate {translate}"); 
+                    Console.WriteLine($"\tTranslate {translate}"); 
                 }
             }
             Console.WriteLine("================");
+            Console.Clear();
         }
         public void addWordAndTranslate()
         {
@@ -60,9 +61,11 @@ namespace CSharp_Course_Work_Dict
                 translation.Add(value);
                 dictionaries.Add(word, translation);
             }
+            Console.Clear();
         }
         public void changeWord()
         {
+            Console.Clear();
             print();
             Console.Write("Enter word to change");
             string changeword = Console.ReadLine();
@@ -82,11 +85,30 @@ namespace CSharp_Course_Work_Dict
             }
             else
             {
-                Console.WriteLine($"Don't contains: {changeword}");
+                Console.WriteLine($"Don't contain: {changeword}");
             }
+            Console.Clear();
+        }
+        public void DeleteWord()
+        {
+            Console.Clear();
+            print();
+            Console.Write("Enter word to delete");
+            string deleteword = Console.ReadLine();
+            if(dictionaries.Keys.Contains(deleteword))
+            {
+                foreach(var word in dictionaries[deleteword])
+                {
+                    dictionaries.Remove(deleteword);
+                }
+            }
+            else { Console.WriteLine($"Dictionary don't contains: {deleteword}");  }
+            Console.Clear();
         }
         public void SearchTranslate()
         {
+            Console.Clear();
+            print();
             Console.WriteLine("Enter word to search: ");
             string tmp = Console.ReadLine();
             var result = dictionaries.Where(x => tmp.Contains(x.Key)).SelectMany(x => x.Value).ToList();
@@ -94,7 +116,8 @@ namespace CSharp_Course_Work_Dict
             {
                 Console.WriteLine(res);
             }
-        }
+            Console.Clear();
+        } 
 
         
     }
