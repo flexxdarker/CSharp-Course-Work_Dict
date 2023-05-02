@@ -5,9 +5,27 @@
         static void Main(string[] args)
         {
             string name = "Ua-En";
-            
-            Dictionaries dictionary = new Dictionaries(name);
+
+            //List<Dictionaries> dictionary;
             int a = 0;
+            //do
+            //{
+            //    Console.WriteLine("1. add word");
+            //    a = Convert.ToInt32(Console.ReadLine());
+            //    switch (a)
+            //    {
+            //        case 1:
+            //            dictionary = new List<Dictionaries>();
+            //            dictionary.Add(new Dictionaries(name));
+            //            dictionary[0].addWordAndTranslate();
+            //            dictionary[0].print();
+            //            Console.WriteLine(dictionary[0].name);
+            //            break;
+            //        default:
+            //            break;
+            //    }
+            //} while (a != -1);
+            Dictionaries dictionary = new Dictionaries(name);
             do
             {
 
@@ -17,7 +35,7 @@
 4.change
 0.exit");
                 a = Convert.ToInt32(Console.ReadLine());
-                switch(a)
+                switch (a)
                 {
                     case 1:
                         dictionary.addWordAndTranslate();
@@ -38,8 +56,8 @@
                         break;
 
                 }
-            }while(a != -1);
-            
+            } while (a != -1);
+
         }
     }
 }

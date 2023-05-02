@@ -10,7 +10,7 @@ namespace CSharp_Course_Work_Dict
 {
     internal class Dictionaries
     {
-        private string name { get; set; }
+        public string name { get; set; }
         private Dictionary<string,List<string>> dictionaries { get; set;}
         public Dictionaries(string name, string word, List<string> translate) 
         {
@@ -26,15 +26,20 @@ namespace CSharp_Course_Work_Dict
         public void print()
         {
             Console.Clear();
+            Console.WriteLine("=================");
             Console.WriteLine($"Name of dictionary: {name}");
             foreach (KeyValuePair<string, List<string>> tmp in dictionaries)
             {
-                Console.Write($"Word {tmp.Key} -> ");
+                Console.WriteLine();
+                Console.WriteLine($@"Word {tmp.Key}      
+   ||
+   \/");
                 foreach (var translate in tmp.Value)
                 {
-                    Console.WriteLine($"Translate {translate}");
+                Console.WriteLine($"Translate {translate}"); 
                 }
             }
+            Console.WriteLine("================");
         }
         public void addWordAndTranslate()
         {
@@ -62,16 +67,22 @@ namespace CSharp_Course_Work_Dict
             Console.Write("Enter word to change");
             string changeword = Console.ReadLine();
             List<string> tmptransalte = new List<string>();
-            foreach(var trans in dictionaries.Values)
+            if (dictionaries.Keys.Contains(changeword))
             {
-                tmptransalte.Add(trans.ToString());
-            }
-            if(dictionaries.Keys.Contains(changeword))
-            {
+                foreach (var trans in dictionaries[changeword])
+                {
+                    tmptransalte.Add(trans.ToString());
+                }
+
                 dictionaries.Remove(changeword);
                 Console.Write("Enter new Word: ");
                 string tmpWord = Console.ReadLine();
                 dictionaries.Add(tmpWord, tmptransalte);
+                print();
+            }
+            else
+            {
+                Console.WriteLine($"Don't contains: {changeword}");
             }
         }
         public void SearchTranslate()
@@ -84,6 +95,7 @@ namespace CSharp_Course_Work_Dict
                 Console.WriteLine(res);
             }
         }
+
         
     }
 }
