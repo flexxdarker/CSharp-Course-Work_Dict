@@ -30,17 +30,18 @@ namespace CSharp_Course_Work_Dict
             Console.WriteLine($"Name of dictionary: {name}");
             foreach (KeyValuePair<string, List<string>> tmp in dictionaries)
             {
-                Console.WriteLine();
-                Console.WriteLine($@"\tWord {tmp.Key}      
-   \t||
-   \t\/");
+                Console.WriteLine($@"Word {tmp.Key}      
+    ||
+   _||_
+   \  /
+    \/");
                 foreach (var translate in tmp.Value)
                 {
-                    Console.WriteLine($"\tTranslate {translate}"); 
+                    Console.WriteLine($"Translate {translate}"); 
                 }
             }
             Console.WriteLine("================");
-            Console.Clear();
+            
         }
         public void addWordAndTranslate()
         {

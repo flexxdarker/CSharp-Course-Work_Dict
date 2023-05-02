@@ -8,5 +8,6 @@ namespace CSharp_Course_Work_Dict
 {
     internal class JsonSave
     {
+
     }
 }
