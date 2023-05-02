@@ -68,7 +68,7 @@ namespace CSharp_Course_Work_Dict
         {
             Console.Clear();
             print();
-            Console.Write("Enter word to change");
+            Console.Write("Enter word to change: ");
             string changeword = Console.ReadLine();
             List<string> tmptransalte = new List<string>();
             if (dictionaries.Keys.Contains(changeword))
@@ -94,7 +94,7 @@ namespace CSharp_Course_Work_Dict
         {
             Console.Clear();
             print();
-            Console.Write("Enter word to change");
+            Console.Write("Enter word to change: ");
             string tmpword = Console.ReadLine();
             if (dictionaries.Keys.Contains(tmpword))
             {
@@ -104,12 +104,12 @@ namespace CSharp_Course_Work_Dict
                 string tmp = Console.ReadLine();
                 Console.Write("Do you want to add another translate?(1.Yes 2.No): ");
                 int a = Convert.ToInt32(Console.ReadLine());
-                do
-                {
-                    Console.Write($"Enter a translate to word: {tmpword}");
+                if( a != 2)
+                { 
+                    Console.Write($"Enter a translate to {tmpword}:   ");
                     tmp = Console.ReadLine();
                     tmpTranslate.Add(tmp);
-                } while (a != 2);
+                }
                 dictionaries.Add(tmpword, tmpTranslate);
                 print();
 
