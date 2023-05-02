@@ -90,6 +90,32 @@ namespace CSharp_Course_Work_Dict
             }
             Console.Clear();
         }
+        public void changeTranslate()
+        {
+            Console.Clear();
+            print();
+            Console.Write("Enter word to change");
+            string tmpword = Console.ReadLine();
+            if (dictionaries.Keys.Contains(tmpword))
+            {
+                dictionaries.Remove(tmpword);
+                List<string> tmpTranslate = new List<string>();
+                Console.Write("Enter new translate: ");
+                string tmp = Console.ReadLine();
+                Console.Write("Do you want to add another translate?(1.Yes 2.No): ");
+                int a = Convert.ToInt32(Console.ReadLine());
+                do
+                {
+                    Console.Write($"Enter a translate to word: {tmpword}");
+                    tmp = Console.ReadLine();
+                    tmpTranslate.Add(tmp);
+                } while (a != 2);
+                dictionaries.Add(tmpword, tmpTranslate);
+                print();
+
+            }
+        }
+
         public void DeleteWord()
         {
             Console.Clear();
