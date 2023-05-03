@@ -9,7 +9,7 @@
             Dictionaries dictionary = new Dictionaries(name);
             int a = 0;
             int b = 0;
-
+            SaveInFile saveInFile = new SaveInFile();
 
             //            do
             //            {
@@ -88,6 +88,8 @@
                            
          7.delet translete
          
+         8.save in file
+         
          0.EXIT
 
 ");
@@ -110,6 +112,15 @@
                         break;
                     case 5:
                         dictionary.changeTranslate();
+                        break;
+                    case 6:
+                        dictionary.DeleteWord();
+                        break;
+                    case 7:
+                        //СЮДА ВИДАЛЕННЯ ПЕРЕКЛАДУ
+                        break;
+                    case 8:
+                        saveInFile.SaveFile(dictionary);
                         break;
                     case 0:
                         a = -1;

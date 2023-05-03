@@ -103,12 +103,14 @@ namespace CSharp_Course_Work_Dict
                 Console.Write("Enter new translate: ");
                 string tmp = Console.ReadLine();
                 Console.Write("Do you want to add another translate?(1.Yes 2.No): ");
-                int a = Convert.ToInt32(Console.ReadLine();
+                int a = Convert.ToInt32(Console.ReadLine());
                 if( a != 2)
                 { 
                     Console.Write($"Enter a translate to {tmpword}:   ");
-                    tmp = Console.ReadLine(); //ПРОБЛЕМА!!!!
+                    tmp = Console.ReadLine(); 
                     tmpTranslate.Add(tmp);
+                    Console.Write("Do you want to add another translate?(1.Yes 2.No): ");
+                    a = Convert.ToInt32(Console.ReadLine());
                 }
                 dictionaries.Add(tmpword, tmpTranslate);
                 print();
