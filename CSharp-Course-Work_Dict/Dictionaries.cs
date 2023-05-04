@@ -135,7 +135,22 @@ namespace CSharp_Course_Work_Dict
         }
         public void deleteTrans()
         {
+                Console.WriteLine("Enter word to delete translete");
 
+                string word = Console.ReadLine();
+                if (dictionaries.Keys.Contains(word))
+                {
+                    Console.WriteLine("Enter translate to delete: ");
+                    string deletetrans = Console.ReadLine();
+                    if (dictionaries[word].Contains(deletetrans))
+                    {
+                        dictionaries[word].Remove(deletetrans);
+                    }
+                    else
+                    { Console.WriteLine($"Dictionary don't contains: {deletetrans}"); }
+                }
+                else
+                { Console.WriteLine($"No such word as: {word} "); }
         }
         public void SearchTranslate()
         {
@@ -174,18 +189,12 @@ namespace CSharp_Course_Work_Dict
         }
         public void UploadFromFile()
         {
-            Console.Write("Enter name of file to upload: ");
-            string tmpfileName = Console.ReadLine();
-            string fileName = tmpfileName + ".json";
-            string desDitc = File.ReadAllText(fileName);
-            try
-            {
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            Console.Clear();
+            Console.Write("Enter name of file: ");
+            string FileName = Console.ReadLine();
+            string deserializedList = File.ReadAllText(FileName);
+            Dictionary<string, List<string>> tmp = JsonSerializer.Deserialize<Dictionary<string, List<string>>>(deserializedList);
+            dictionaries = tmp;
         }
 
     }
