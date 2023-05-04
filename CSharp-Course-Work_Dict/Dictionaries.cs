@@ -28,7 +28,7 @@ namespace CSharp_Course_Work_Dict
         {
             Console.Clear();
             Console.WriteLine("=================");
-            Console.WriteLine($"Name of dictionary: {name}");
+            
             foreach (KeyValuePair<string, List<string>> tmp in dictionaries)
             {
                 Console.WriteLine($@"Word {tmp.Key}      
@@ -42,7 +42,6 @@ namespace CSharp_Course_Work_Dict
                 }
             }
             Console.WriteLine("================");
-
         }
         public void addWordAndTranslate()
         {
@@ -189,11 +188,21 @@ namespace CSharp_Course_Work_Dict
         public void UploadFromFile()
         {
             Console.Clear();
-            Console.Write("Enter name of file: ");
-            string FileName = Console.ReadLine();
-            string deserializedList = File.ReadAllText(FileName);
-            Dictionary<string, List<string>> tmp = JsonSerializer.Deserialize<Dictionary<string, List<string>>>(deserializedList);
-            dictionaries = tmp;
+            try
+            {
+                Console.Write("Enter name of file: ");
+                string tmpFileName = Console.ReadLine();
+                string FileName = tmpFileName + ".json";
+                string deserializedList = File.ReadAllText(FileName);
+                Dictionary<string, List<string>> tmp = JsonSerializer.Deserialize<Dictionary<string, List<string>>>(deserializedList);
+                dictionaries = tmp;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            
         }
 
     }

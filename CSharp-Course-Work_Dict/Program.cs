@@ -1,9 +1,12 @@
-﻿namespace CSharp_Course_Work_Dict
+﻿using System.Text;
+
+namespace CSharp_Course_Work_Dict
 {
     internal class Program
     {
         static void Main(string[] args)
         {
+            Console.OutputEncoding = Encoding.UTF8;
             string name = "";
             List<Dictionaries> dictionary = new List<Dictionaries>();
             bool start = false;
@@ -79,42 +82,51 @@
                                      0.EXIT
                             
                             ");
-
+                            Console.Write("Enter what to do: ");
                             a = Convert.ToInt32(Console.ReadLine());
                             switch (a)
                             {
                                 case 1:
+                                    Console.Clear();
                                     dictionary[i].addWordAndTranslate();
                                     start = true;
                                     break;
                                 case 2:
+                                    Console.Clear();
                                     dictionary[i].print();
                                     start = true;
                                     break;
                                 case 3:
+                                    Console.Clear();
                                     dictionary[i].SearchTranslate();
                                     start = true;
                                     break;
                                 case 4:
+                                    Console.Clear();
                                     dictionary[i].changeWord();
                                     start = true;
                                     break;
                                 case 5:
+                                    Console.Clear();
                                     dictionary[i].changeTranslate();
                                     start = true;
                                     break;
                                 case 6:
+                                    Console.Clear();
                                     dictionary[i].DeleteWord();
                                     start = true;
                                     break;
                                 case 7:
+                                    Console.Clear();
                                     dictionary[i].deleteTrans();
                                     break;
                                 case 8:
+                                    Console.Clear();
                                     dictionary[i].SaveFile();
                                     start = true;
                                     break;
                                 case 9:
+                                    Console.Clear();
                                     dictionary[i].UploadFromFile();
                                     start = true;
                                     break;
@@ -244,81 +256,6 @@
                         break;
                 }
             } while (b != -1);
-
-
         }
     }
 }
-//
-//
-//
-//
-//
-
-//
-
-//
-
-//
-
-//
-
-//
-
-//
-
-//
-
-//
-
-//
-
-//
-
-//
-//
-//
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-//
-//
