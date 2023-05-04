@@ -63,7 +63,7 @@ namespace CSharp_Course_Work_Dict
                 translation.Add(value);
                 dictionaries.Add(word, translation);
             }
-            
+
         }
         public void changeWord()
         {
@@ -89,7 +89,7 @@ namespace CSharp_Course_Work_Dict
             {
                 Console.WriteLine($"Don't contain: {changeword}");
             }
-            
+
         }
         public void changeTranslate()
         {
@@ -131,26 +131,25 @@ namespace CSharp_Course_Work_Dict
                 }
             }
             else { Console.WriteLine($"Dictionary don't contains: {deleteword}"); }
-            
+
         }
         public void deleteTrans()
         {
-                Console.WriteLine("Enter word to delete translete");
-
-                string word = Console.ReadLine();
-                if (dictionaries.Keys.Contains(word))
+            Console.WriteLine("Enter word to delete translete");
+            string word = Console.ReadLine();
+            if (dictionaries.Keys.Contains(word))
+            {
+                Console.WriteLine("Enter translate to delete: ");
+                string deletetrans = Console.ReadLine();
+                if (dictionaries[word].Contains(deletetrans))
                 {
-                    Console.WriteLine("Enter translate to delete: ");
-                    string deletetrans = Console.ReadLine();
-                    if (dictionaries[word].Contains(deletetrans))
-                    {
-                        dictionaries[word].Remove(deletetrans);
-                    }
-                    else
-                    { Console.WriteLine($"Dictionary don't contains: {deletetrans}"); }
+                    dictionaries[word].Remove(deletetrans);
                 }
                 else
-                { Console.WriteLine($"No such word as: {word} "); }
+                { Console.WriteLine($"Dictionary don't contains: {deletetrans}"); }
+            }
+            else
+            { Console.WriteLine($"No such word as: {word}"); }
         }
         public void SearchTranslate()
         {
@@ -159,11 +158,11 @@ namespace CSharp_Course_Work_Dict
             Console.WriteLine("Enter word to search: ");
             string tmp = Console.ReadLine();
             var result = dictionaries.Where(x => tmp.Contains(x.Key)).SelectMany(x => x.Value).ToList();
-            foreach(var res in result)
+            foreach (var res in result)
             {
                 Console.WriteLine(res);
             }
-            
+
         }
         public void SaveFile()
         {
@@ -178,7 +177,7 @@ namespace CSharp_Course_Work_Dict
                     WriteIndented = true,
                     Encoder = System.Text.Encodings.Web.JavaScriptEncoder.Create(System.Text.Unicode.UnicodeRanges.All),
                 };
-                string json = JsonSerializer.Serialize(dictionaries ,options);
+                string json = JsonSerializer.Serialize(dictionaries, options);
                 File.WriteAllText(fileName, json);
                 Console.WriteLine("Saving into file completed!!!");
             }
