@@ -63,7 +63,7 @@ namespace CSharp_Course_Work_Dict
                 translation.Add(value);
                 dictionaries.Add(word, translation);
             }
-            Console.Clear();
+            
         }
         public void changeWord()
         {
@@ -89,7 +89,7 @@ namespace CSharp_Course_Work_Dict
             {
                 Console.WriteLine($"Don't contain: {changeword}");
             }
-            Console.Clear();
+            
         }
         public void changeTranslate()
         {
@@ -131,7 +131,7 @@ namespace CSharp_Course_Work_Dict
                 }
             }
             else { Console.WriteLine($"Dictionary don't contains: {deleteword}"); }
-            Console.Clear();
+            
         }
         public void deleteTrans()
         {
@@ -148,10 +148,11 @@ namespace CSharp_Course_Work_Dict
             {
                 Console.WriteLine(res);
             }
-            Console.Clear();
+            
         }
         public void SaveFile()
         {
+            Console.Clear();
             Console.Write("Enter name of file: ");
             string tmpfileName = Console.ReadLine();
             string fileName = tmpfileName + ".json";
@@ -162,7 +163,7 @@ namespace CSharp_Course_Work_Dict
                     WriteIndented = true,
                     Encoder = System.Text.Encodings.Web.JavaScriptEncoder.Create(System.Text.Unicode.UnicodeRanges.All),
                 };
-                string json = JsonSerializer.Serialize(dictionaries,options);
+                string json = JsonSerializer.Serialize(dictionaries ,options);
                 File.WriteAllText(fileName, json);
                 Console.WriteLine("Saving into file completed!!!");
             }
@@ -170,24 +171,6 @@ namespace CSharp_Course_Work_Dict
             {
                 Console.WriteLine(ex.Message);
             }
-            
-            //string FileName = "English-UkrainianDictionary.json";
-            //try
-            //{
-            //    var options = new JsonSerializerOptions
-            //    {
-            //        WriteIndented = true,
-            //        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.Create(System.Text.Unicode.UnicodeRanges.All),
-            //    };
-            //    string SerializedList = JsonSerializer.Serialize(dictionaries, options);
-
-            //    File.WriteAllText(FileName, SerializedList);
-
-            //    Console.WriteLine($"Done! Look at file {FileName}");
-            //}
-            //catch (Exception ex)
-            //{ Console.WriteLine(ex.Message); }..
-
         }
         public void UploadFromFile()
         {
@@ -195,7 +178,14 @@ namespace CSharp_Course_Work_Dict
             string tmpfileName = Console.ReadLine();
             string fileName = tmpfileName + ".json";
             string desDitc = File.ReadAllText(fileName);
-            //dictionaries = JsonSerializer.Deserialize(desDitc, )
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
     }
