@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace CSharp_Course_Work_Dict
@@ -11,17 +12,17 @@ namespace CSharp_Course_Work_Dict
     internal class Dictionaries
     {
         public string name { get; set; }
-        private Dictionary<string,List<string>> dictionaries { get; set;}
-        public Dictionaries(string name, string word, List<string> translate) 
+        private Dictionary<string, List<string>> dictionaries { get; set; }
+        public Dictionaries(string name, string word, List<string> translate)
         {
             this.name = name;
-            dictionaries = new Dictionary<string,List<string>>();
+            dictionaries = new Dictionary<string, List<string>>();
             dictionaries.Add(word, translate);
         }
-        public Dictionaries(string name) 
+        public Dictionaries(string name)
         {
             this.name = name;
-            dictionaries = new Dictionary<string,List<string>>();
+            dictionaries = new Dictionary<string, List<string>>();
         }
         public void print()
         {
@@ -37,11 +38,11 @@ namespace CSharp_Course_Work_Dict
     \/");
                 foreach (var translate in tmp.Value)
                 {
-                    Console.WriteLine($"Translate {translate}"); 
+                    Console.WriteLine($"Translate {translate}");
                 }
             }
             Console.WriteLine("================");
-            
+
         }
         public void addWordAndTranslate()
         {
@@ -104,13 +105,11 @@ namespace CSharp_Course_Work_Dict
                 string tmp = Console.ReadLine();
                 Console.Write("Do you want to add another translate?(1.Yes 2.No): ");
                 int a = Convert.ToInt32(Console.ReadLine());
-                if( a != 2)
-                { 
+                if (a != 2)
+                {
                     Console.Write($"Enter a translate to {tmpword}:   ");
-                    tmp = Console.ReadLine(); 
+                    tmp = Console.ReadLine();
                     tmpTranslate.Add(tmp);
-                    Console.Write("Do you want to add another translate?(1.Yes 2.No): ");
-                    a = Convert.ToInt32(Console.ReadLine());
                 }
                 dictionaries.Add(tmpword, tmpTranslate);
                 print();
@@ -124,15 +123,19 @@ namespace CSharp_Course_Work_Dict
             print();
             Console.Write("Enter word to delete");
             string deleteword = Console.ReadLine();
-            if(dictionaries.Keys.Contains(deleteword))
+            if (dictionaries.Keys.Contains(deleteword))
             {
-                foreach(var word in dictionaries[deleteword])
+                foreach (var word in dictionaries[deleteword])
                 {
                     dictionaries.Remove(deleteword);
                 }
             }
-            else { Console.WriteLine($"Dictionary don't contains: {deleteword}");  }
+            else { Console.WriteLine($"Dictionary don't contains: {deleteword}"); }
             Console.Clear();
+        }
+        public void deleteTrans()
+        {
+
         }
         public void SearchTranslate()
         {
@@ -146,8 +149,54 @@ namespace CSharp_Course_Work_Dict
                 Console.WriteLine(res);
             }
             Console.Clear();
-        } 
+        }
+        public void SaveFile()
+        {
+            Console.Write("Enter name of file: ");
+            string tmpfileName = Console.ReadLine();
+            string fileName = tmpfileName + ".json";
+            try
+            {
+                var options = new JsonSerializerOptions
+                {
+                    WriteIndented = true,
+                    Encoder = System.Text.Encodings.Web.JavaScriptEncoder.Create(System.Text.Unicode.UnicodeRanges.All),
+                };
+                string json = JsonSerializer.Serialize(dictionaries,options);
+                File.WriteAllText(fileName, json);
+                Console.WriteLine("Saving into file completed!!!");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            
+            //string FileName = "English-UkrainianDictionary.json";
+            //try
+            //{
+            //    var options = new JsonSerializerOptions
+            //    {
+            //        WriteIndented = true,
+            //        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.Create(System.Text.Unicode.UnicodeRanges.All),
+            //    };
+            //    string SerializedList = JsonSerializer.Serialize(dictionaries, options);
 
-        
+            //    File.WriteAllText(FileName, SerializedList);
+
+            //    Console.WriteLine($"Done! Look at file {FileName}");
+            //}
+            //catch (Exception ex)
+            //{ Console.WriteLine(ex.Message); }..
+
+        }
+        public void UploadFromFile()
+        {
+            Console.Write("Enter name of file to upload: ");
+            string tmpfileName = Console.ReadLine();
+            string fileName = tmpfileName + ".json";
+            string desDitc = File.ReadAllText(fileName);
+            //dictionaries = JsonSerializer.Deserialize(desDitc, )
+        }
+
     }
 }

@@ -9,7 +9,6 @@
             Dictionaries dictionary = new Dictionaries(name);
             int a = 0;
             int b = 0;
-            SaveInFile saveInFile = new SaveInFile();
 
             //            do
             //            {
@@ -89,6 +88,8 @@
          7.delet translete
          
          8.save in file
+
+         9.upload from file
          
          0.EXIT
 
@@ -120,7 +121,10 @@
                         //СЮДА ВИДАЛЕННЯ ПЕРЕКЛАДУ
                         break;
                     case 8:
-                        saveInFile.SaveFile(dictionary);
+                        dictionary.SaveFile();
+                        break;
+                    case 9:
+                        dictionary.UploadFromFile();
                         break;
                     case 0:
                         a = -1;
