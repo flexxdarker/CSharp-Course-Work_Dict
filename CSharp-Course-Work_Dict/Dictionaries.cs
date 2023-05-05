@@ -24,11 +24,11 @@ namespace CSharp_Course_Work_Dict
             this.name = name;
             dictionaries = new Dictionary<string, List<string>>();
         }
-        public void print()
+        public void print()//Made by Max
         {
             Console.Clear();
             Console.WriteLine("=================");
-            
+            Console.OutputEncoding = Encoding.UTF8;
             foreach (KeyValuePair<string, List<string>> tmp in dictionaries)
             {
                 Console.WriteLine($@"Word {tmp.Key}      
@@ -42,8 +42,11 @@ namespace CSharp_Course_Work_Dict
                 }
             }
             Console.WriteLine("================");
+            Console.WriteLine("Press any key to countinue");
+            Console.ReadKey();
+            Console.Clear();
         }
-        public void addWordAndTranslate()
+        public void addWordAndTranslate()//Made by Max
         {
             Console.Clear();
             Console.Write("Enter word: ");
@@ -64,7 +67,7 @@ namespace CSharp_Course_Work_Dict
             }
 
         }
-        public void changeWord()
+        public void changeWord()//Made by Max
         {
             Console.Clear();
             print();
@@ -90,7 +93,7 @@ namespace CSharp_Course_Work_Dict
             }
 
         }
-        public void changeTranslate()
+        public void changeTranslate()//Made by Egor
         {
             Console.Clear();
             print();
@@ -115,8 +118,7 @@ namespace CSharp_Course_Work_Dict
 
             }
         }
-
-        public void DeleteWord()
+        public void DeleteWord()//Made by Max
         {
             Console.Clear();
             print();
@@ -132,7 +134,7 @@ namespace CSharp_Course_Work_Dict
             else { Console.WriteLine($"Dictionary don't contains: {deleteword}"); }
 
         }
-        public void deleteTrans()
+        public void deleteTrans()//Made by Egor
         {
             Console.WriteLine("Enter word to delete translete");
             string word = Console.ReadLine();
@@ -150,7 +152,7 @@ namespace CSharp_Course_Work_Dict
             else
             { Console.WriteLine($"No such word as: {word}"); }
         }
-        public void SearchTranslate()
+        public void SearchTranslate()//Made by Egor
         {
             Console.Clear();
             print();
@@ -163,7 +165,7 @@ namespace CSharp_Course_Work_Dict
             }
 
         }
-        public void SaveFile()
+        public void SaveFile()//Made by Max
         {
             Console.Clear();
             Console.Write("Enter name of file: ");
@@ -185,7 +187,7 @@ namespace CSharp_Course_Work_Dict
                 Console.WriteLine(ex.Message);
             }
         }
-        public void UploadFromFile()
+        public void UploadFromFile()//Made by Max
         {
             Console.Clear();
             try

@@ -6,14 +6,15 @@ namespace CSharp_Course_Work_Dict
     {
         static void Main(string[] args)
         {
-            Console.OutputEncoding = Encoding.UTF8;
-            string name = "";
+            
+            
             List<Dictionaries> dictionary = new List<Dictionaries>();
             bool start = false;
             int a = 0;
             int b = 0;
             int i = 0;
-            if (!start)
+            int it = 0;
+            if (!start)//Made by Egor
             {
                 Console.WriteLine(@"
 ░█████╗░░█████╗░██╗░░░██╗██████╗░░██████╗███████╗░██╗░░░░░░░██╗░█████╗░██████╗░██╗░░██╗ ▐▓█▀▀▀▀▀▀▀▀▀█▓▌░▄▄▄▄▄░
@@ -40,7 +41,7 @@ namespace CSharp_Course_Work_Dict
 ");
 
             }
-            do
+            do//Made by Egor
             {
                 Console.WriteLine(@"
 1. Add new dictionary
@@ -55,11 +56,12 @@ namespace CSharp_Course_Work_Dict
                     case 1:
                         Console.Clear();
                         Console.Write("Enter name of dictionary: ");
-                        name = Console.ReadLine();
+                        string name = Console.ReadLine();
                         dictionary.Add(new Dictionaries(name));
-                        Console.WriteLine($"Dictionary: {dictionary[0].name}");
+                        name = null;
                         do
                         {
+                            Console.WriteLine($"Dictionary: {dictionary[it].name}");
                             Console.WriteLine(@"
                                      1.Add word
                             
@@ -88,57 +90,58 @@ namespace CSharp_Course_Work_Dict
                             {
                                 case 1:
                                     Console.Clear();
-                                    dictionary[i].addWordAndTranslate();
+                                    dictionary[it].addWordAndTranslate();
                                     start = true;
                                     break;
                                 case 2:
                                     Console.Clear();
-                                    dictionary[i].print();
+                                    dictionary[it].print();
                                     start = true;
                                     break;
                                 case 3:
                                     Console.Clear();
-                                    dictionary[i].SearchTranslate();
+                                    dictionary[it].SearchTranslate();
                                     start = true;
                                     break;
                                 case 4:
                                     Console.Clear();
-                                    dictionary[i].changeWord();
+                                    dictionary[it].changeWord();
                                     start = true;
                                     break;
                                 case 5:
                                     Console.Clear();
-                                    dictionary[i].changeTranslate();
+                                    dictionary[it].changeTranslate();
                                     start = true;
                                     break;
                                 case 6:
                                     Console.Clear();
-                                    dictionary[i].DeleteWord();
+                                    dictionary[it].DeleteWord();
                                     start = true;
                                     break;
                                 case 7:
                                     Console.Clear();
-                                    dictionary[i].deleteTrans();
+                                    dictionary[it].deleteTrans();
                                     break;
                                 case 8:
                                     Console.Clear();
-                                    dictionary[i].SaveFile();
+                                    dictionary[it].SaveFile();
                                     start = true;
                                     break;
                                 case 9:
                                     Console.Clear();
-                                    dictionary[i].UploadFromFile();
+                                    dictionary[it].UploadFromFile();
                                     start = true;
                                     break;
                                 case 0:
                                     a = -1;
-                                    i++;
                                     break;
                                 default:
                                     break;
 
                             }
                         } while (a != -1);
+                        Console.Clear();
+                        it++;
                         break;
                     case 2:
                         Console.Clear();
@@ -164,13 +167,14 @@ namespace CSharp_Course_Work_Dict
                         }
                         Console.Write("Enter name of dictionary to edit: ");
                         name = Console.ReadLine();
+                        Console.Clear();
                         foreach (Dictionaries d in dictionary.ToList())
                         {
                             if (d.name == name)
                             {
                                 do
                                 {
-                                    Console.WriteLine($"Dictionary: {dictionary[0].name}");
+                                    Console.WriteLine($"Dictionary: {dictionary[i].name}");
                                     Console.WriteLine(@"
                                      1.Add word
                             
@@ -195,46 +199,55 @@ namespace CSharp_Course_Work_Dict
                             ");
 
                                     a = Convert.ToInt32(Console.ReadLine());
+                                    Console.Clear();
                                     switch (a)
                                     {
                                         case 1:
+                                            Console.Clear();
                                             dictionary[i].addWordAndTranslate();
                                             start = true;
                                             break;
                                         case 2:
+                                            Console.Clear();
                                             dictionary[i].print();
                                             start = true;
                                             break;
                                         case 3:
+                                            Console.Clear();
                                             dictionary[i].SearchTranslate();
                                             start = true;
                                             break;
                                         case 4:
+                                            Console.Clear();
                                             dictionary[i].changeWord();
                                             start = true;
                                             break;
                                         case 5:
+                                            Console.Clear();
                                             dictionary[i].changeTranslate();
                                             start = true;
                                             break;
                                         case 6:
+                                            Console.Clear();
                                             dictionary[i].DeleteWord();
                                             start = true;
                                             break;
                                         case 7:
+                                            Console.Clear();
                                             dictionary[i].deleteTrans();
                                             break;
                                         case 8:
+                                            Console.Clear();
                                             dictionary[i].SaveFile();
                                             start = true;
                                             break;
                                         case 9:
+                                            Console.Clear();
                                             dictionary[i].UploadFromFile();
                                             start = true;
                                             break;
                                         case 0:
                                             a = -1;
-                                            i++;
                                             break;
                                         default:
                                             break;
@@ -242,7 +255,10 @@ namespace CSharp_Course_Work_Dict
                                     }
                                 } while (a != -1);
                             }
+                            i++;
                         }
+                        i = 0;
+                        Console.Clear();
                         break;
                     case 4:
                         Console.Clear();
