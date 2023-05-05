@@ -257,7 +257,7 @@ namespace CSharp_Course_Work_Dict
                             }
                             i++;
                         }
-                        i = 0;
+                        it = 0;
                         Console.Clear();
                         break;
                     case 4:
